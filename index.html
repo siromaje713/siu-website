@@ -342,8 +342,13 @@
   <section id="contact" class="pad">
     <div class="inner">
       <p class="eyebrow">Contact</p>
-      <p class="contact-lead">ご相談・お見積りは、メールでお受けしています。</p>
-      <a class="mail" href="mailto:s_suzuki@siu-inc.com">s_suzuki@siu-inc.com</a>
+      <form id="f" action="mailto:s_suzuki@siu-inc.com" method="post" enctype="text/plain">
+        <div class="field"><label for="c1">貴社名</label><input type="text" id="c1" name="貴社名" autocomplete="organization"></div>
+        <div class="field"><label for="c2">ご担当者名</label><input type="text" id="c2" name="ご担当者名" autocomplete="name" required></div>
+        <div class="field"><label for="c3">メールアドレス</label><input type="email" id="c3" name="メールアドレス" autocomplete="email" required></div>
+        <div class="field"><label for="c4">お問い合わせ内容</label><textarea id="c4" name="お問い合わせ内容" required></textarea></div>
+        <button type="submit">送信</button>
+      </form>
     </div>
   </section>
 
