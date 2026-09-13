@@ -1,216 +1,210 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="株式会社Siu — パチンコ・パチスロホール向けの広告代理業。来店企画の設計、実戦スタッフの手配・運営、SNSを使った集客支援。">
+<meta property="og:title" content="株式会社Siu">
+<meta property="og:description" content="いい日は、つくれる。">
+<meta name="theme-color" content="#F3EDE2">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Ccircle cx='10' cy='10' r='6.5' fill='none' stroke='%232F4434' stroke-width='1.2'/%3E%3Ccircle cx='24' cy='10' r='3.2' fill='%23C9C36E'/%3E%3Ccircle cx='10' cy='24' r='3.2' fill='%23C9C36E'/%3E%3Ccircle cx='24' cy='24' r='6.5' fill='none' stroke='%232F4434' stroke-width='1.2'/%3E%3C/svg%3E">
 <title>株式会社Siu</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Shippori+Mincho+B1:wght@400;500&family=Noto+Sans+JP:wght@300;400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Shippori+Mincho+B1:wght@400;500;600&family=Noto+Sans+JP:wght@300;400&display=swap">
 <style>
   :root{
     --paper:#F3EDE2;
+    --paper-deep:#EAE2D3;
     --ink:#2F4434;
-    --ink-soft:#6B7A6D;
+    --ink-soft:#66756A;
     --olive:#C9C36E;
-    --rule:rgba(47,68,52,.16);
-    --paper-on-dark:#F3EDE2;
-    --rule-on-dark:rgba(243,237,226,.2);
-    --step:clamp(72px,11vw,132px);
+    --rule:rgba(47,68,52,.15);
+    --rule-dark:rgba(243,237,226,.18);
+    --gutter:24px;
+    --block:clamp(84px,12vw,148px);
+    --ease:cubic-bezier(.2,.7,.2,1);
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
-  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
-
   body{
-    margin:0;
-    background:var(--paper);
-    color:var(--ink);
-    font-family:"Noto Sans JP",system-ui,sans-serif;
-    font-weight:300;
-    font-size:15px;
-    line-height:2.05;
-    -webkit-font-smoothing:antialiased;
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Noto Sans JP",system-ui,sans-serif;font-weight:300;
+    font-size:15px;line-height:2.05;-webkit-font-smoothing:antialiased;
+    font-feature-settings:"palt";
   }
-  .pad{padding-inline:24px}
-  .inner{max-width:1040px;margin:0 auto}
+  .pad{padding-inline:var(--gutter)}
+  .inner{max-width:1080px;margin:0 auto}
+  .serif{font-family:"Cormorant Garamond",serif}
+  .mincho{font-family:"Shippori Mincho B1",serif}
 
-  /* ─── nav ─── */
-  .nav{
-    position:sticky;top:0;z-index:20;
-    background:var(--paper);
-    border-bottom:1px solid var(--rule);
-  }
-  .nav .inner{
-    display:flex;align-items:center;justify-content:space-between;
-    gap:16px;padding-block:16px;
-  }
+  /* ── nav ── */
+  .nav{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--rule)}
+  .nav .inner{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:15px}
   .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
-  .brand span{
-    font-family:"Cormorant Garamond",serif;font-size:27px;line-height:1;
-    letter-spacing:.07em;
+  .brand svg{display:block}
+  .brand span{font-family:"Cormorant Garamond",serif;font-size:28px;line-height:1;letter-spacing:.08em}
+  .nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0}
+  .nav li a{font-size:12px;letter-spacing:.12em;color:var(--ink-soft);text-decoration:none;transition:color .2s}
+  .nav li a:hover,.nav li a:focus-visible{color:var(--ink)}
+  a:focus-visible{outline:2px solid var(--olive);outline-offset:4px}
+  @media (max-width:700px){
+    .nav .inner{flex-wrap:wrap;gap:12px 20px}
+    .nav ul{gap:18px;overflow-x:auto;width:100%;padding-bottom:2px;scrollbar-width:none}
+    .nav ul::-webkit-scrollbar{display:none}
+    .nav li a{white-space:nowrap}
   }
-  .nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0}
-  .nav a{
-    font-size:12px;letter-spacing:.1em;color:var(--ink-soft);
-    text-decoration:none;transition:color .18s;
-  }
-  .nav a:hover,.nav a:focus-visible{color:var(--ink)}
-  .nav a:focus-visible,.brand:focus-visible{outline:2px solid var(--olive);outline-offset:4px}
-  @media (max-width:660px){ .nav ul{display:none} }
 
-  /* ─── hero ─── */
-  .hero{position:relative;overflow:hidden}
+  /* ── hero ── */
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--rule)}
   .hero .inner{
-    position:relative;
-    min-height:clamp(420px,72vh,600px);
-    display:flex;align-items:center;
-    padding-block:var(--step);
+    position:relative;min-height:clamp(480px,78vh,680px);
+    display:flex;align-items:center;padding-block:var(--block);
   }
-  .hero-art{
-    position:absolute;inset:0;
-    pointer-events:none;
+  .art{position:absolute;inset:0;pointer-events:none}
+  .art svg{
+    position:absolute;right:-8%;top:50%;transform:translateY(-50%);
+    width:min(600px,74vw);height:auto;
   }
-  .hero-art svg{
-    position:absolute;right:-6%;top:50%;transform:translateY(-50%);
-    width:min(560px,68vw);height:auto;
+  @media (max-width:820px){
+    .hero .inner{align-items:flex-start;min-height:0;padding-bottom:calc(var(--block) + 34vw)}
+    .art svg{top:auto;bottom:-6vw;right:-14%;transform:none;width:min(420px,88vw);opacity:.85}
   }
-  .hero-copy{position:relative;z-index:1}
-  .hero h1{
+  .drift{animation:drift 14s var(--ease) infinite alternate}
+  @keyframes drift{from{transform:translateX(0)}to{transform:translateX(18px)}}
+  .copy{position:relative;z-index:1;max-width:640px}
+  .kicker{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:14px;letter-spacing:.2em;color:var(--olive);margin:0 0 34px}
+  h1{
     font-family:"Shippori Mincho B1",serif;font-weight:500;
-    font-size:clamp(30px,6.6vw,60px);
-    line-height:1.45;letter-spacing:.03em;
+    font-size:clamp(36px,8vw,76px);line-height:1.28;letter-spacing:.02em;
     margin:0;text-wrap:balance;
   }
-  .hero .latin{
-    font-family:"Cormorant Garamond",serif;font-style:italic;
-    font-size:14px;letter-spacing:.18em;color:var(--olive);
-    margin:0 0 30px;
+  .sub{
+    font-family:"Shippori Mincho B1",serif;font-weight:400;
+    font-size:clamp(15px,2.6vw,20px);line-height:1.9;letter-spacing:.05em;
+    margin:30px 0 0;color:var(--ink);opacity:.82;
   }
+  .sub::before{content:"";display:inline-block;width:28px;height:1px;background:var(--olive);vertical-align:middle;margin-right:14px}
 
-  /* ─── section frame ─── */
-  section{border-top:1px solid var(--rule)}
-  section > .inner{padding-block:var(--step)}
+  /* ── horizon band (section divider motif) ── */
+  .horizon{display:flex;flex-direction:column;gap:8px;padding-block:30px}
+  .horizon i{display:block;height:1px;background:var(--ink);opacity:.35}
+  .horizon i:nth-child(2){height:2px;background:var(--olive);opacity:1;width:62%}
+  .horizon i:nth-child(3){width:38%}
+
+  /* ── generic section ── */
+  section > .inner{padding-block:var(--block)}
   .eyebrow{
-    font-family:"Cormorant Garamond",serif;
-    font-size:12px;letter-spacing:.3em;text-transform:uppercase;
-    color:var(--olive);margin:0 0 34px;
+    font-family:"Cormorant Garamond",serif;font-size:12px;letter-spacing:.32em;
+    text-transform:uppercase;color:var(--olive);margin:0 0 40px;display:flex;align-items:center;gap:14px;
   }
+  .eyebrow::after{content:"";flex:1;height:1px;background:var(--rule)}
 
-  /* ─── services ─── */
-  .svc{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
-    gap:48px 40px;
-  }
-  .svc-item{display:flex;flex-direction:column;gap:22px}
+  /* ── services ── */
+  .svc{display:grid;grid-template-columns:repeat(3,1fr);gap:44px}
+  .svc-item{display:flex;flex-direction:column;gap:26px;padding-top:26px;border-top:1px solid var(--ink)}
   .svc-item svg{display:block}
   .svc-item h2{
-    font-family:"Shippori Mincho B1",serif;font-weight:400;
-    font-size:clamp(17px,2.6vw,20px);line-height:1.7;
-    margin:0;letter-spacing:.04em;
+    font-family:"Shippori Mincho B1",serif;font-weight:500;
+    font-size:clamp(18px,2.4vw,21px);line-height:1.75;margin:0;letter-spacing:.05em;
   }
+  .svc-item .n{font-family:"Cormorant Garamond",serif;font-size:13px;letter-spacing:.2em;color:var(--olive)}
+  @media (max-width:760px){.svc{grid-template-columns:1fr;gap:34px}}
 
-  /* ─── siu (dark) ─── */
-  .siu{
-    background:var(--ink);color:var(--paper-on-dark);
-    border-top:none;
-  }
+  /* ── siu (dark) ── */
+  .siu{background:var(--ink);color:var(--paper);position:relative;overflow:hidden}
   .siu .eyebrow{color:var(--olive)}
-  .siu-list{display:flex;flex-direction:column}
-  .siu-row{
-    display:grid;grid-template-columns:120px 1fr;
-    gap:10px 40px;align-items:start;
-    padding-block:38px;
-    border-top:1px solid var(--rule-on-dark);
+  .siu .eyebrow::after{background:var(--rule-dark)}
+  .siu-bg{position:absolute;right:-180px;top:40px;width:460px;height:460px;border-radius:50%;border:1px solid var(--rule-dark);pointer-events:none}
+  .siu-bg::after{content:"";position:absolute;inset:80px;border-radius:50%;border:1px solid var(--rule-dark)}
+  @media (max-width:1100px){.siu-bg{display:none}}
+  .siu .inner{position:relative;z-index:1}
+  .siu-list{position:relative;display:flex;flex-direction:column}
+  .row{
+    display:grid;grid-template-columns:140px 1fr;gap:12px 48px;align-items:start;
+    padding-block:42px;border-top:1px solid var(--rule-dark);
   }
-  .siu-row:first-child{border-top:none;padding-top:0}
-  .siu-row:last-child{padding-bottom:0}
-  .siu-mark{display:flex;align-items:baseline;gap:14px}
-  .siu-letter{
+  .row:first-child{border-top:none;padding-top:0}
+  .row:last-child{padding-bottom:0}
+  .letter{
     font-family:"Cormorant Garamond",serif;font-weight:300;
-    font-size:clamp(46px,9vw,62px);line-height:.85;color:var(--olive);
+    font-size:clamp(56px,10vw,84px);line-height:.8;color:var(--olive);
   }
-  .siu-word{
-    font-family:"Cormorant Garamond",serif;font-size:17px;
-    letter-spacing:.14em;color:var(--paper-on-dark);margin:0 0 10px;
+  .word{font-family:"Cormorant Garamond",serif;font-size:18px;letter-spacing:.16em;margin:0 0 12px;color:var(--paper)}
+  .body{margin:0;font-size:14.5px;line-height:2.2;max-width:46ch;color:rgba(243,237,226,.84)}
+  .motto{
+    position:relative;margin:64px 0 0;padding-top:34px;border-top:1px solid var(--olive);
+    font-family:"Cormorant Garamond",serif;font-style:italic;font-weight:300;
+    font-size:clamp(26px,4.6vw,40px);letter-spacing:.04em;color:var(--paper);line-height:1.3;
   }
-  .siu-body{
-    margin:0;font-size:14px;line-height:2.15;
-    max-width:44ch;color:rgba(243,237,226,.82);
-  }
-  @media (max-width:620px){
-    .siu-row{grid-template-columns:1fr;gap:14px}
-    .siu-mark{gap:10px}
-    .siu-letter{font-size:44px}
-  }
+  @media (max-width:640px){.row{grid-template-columns:1fr;gap:14px}.letter{font-size:56px}}
 
-  /* ─── area ─── */
-  .area .inner{display:flex;flex-direction:column;gap:34px}
-  .area p.big{
-    font-family:"Shippori Mincho B1",serif;font-weight:400;
-    font-size:clamp(20px,4vw,30px);line-height:1.8;
-    margin:0;letter-spacing:.04em;
+  /* ── area ── */
+  .area .inner{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end}
+  .area .big{
+    font-family:"Shippori Mincho B1",serif;font-weight:500;
+    font-size:clamp(22px,4.4vw,34px);line-height:1.75;margin:0;letter-spacing:.04em;
   }
-  .lines{display:flex;flex-direction:column;gap:9px;max-width:420px}
-  .lines i{display:block;height:1px;background:var(--ink);opacity:.5}
-  .lines i:nth-child(1){width:100%}
-  .lines i:nth-child(2){width:78%;height:2px;opacity:.9;background:var(--olive)}
-  .lines i:nth-child(3){width:54%}
-  .lines i:nth-child(4){width:30%}
+  .area svg{display:block}
+  @media (max-width:640px){.area .inner{grid-template-columns:1fr}.area svg{width:140px;height:auto}}
 
-  /* ─── company ─── */
+  /* ── company ── */
+  .company{background:var(--paper-deep)}
   dl{margin:0;display:grid;grid-template-columns:auto 1fr}
-  dt,dd{padding-block:17px;margin:0;border-top:1px solid var(--rule)}
-  dt{
-    font-family:"Shippori Mincho B1",serif;font-size:13.5px;
-    color:var(--ink-soft);padding-right:44px;white-space:nowrap;
-  }
+  dt,dd{padding-block:18px;margin:0;border-top:1px solid var(--rule)}
+  dt{font-family:"Shippori Mincho B1",serif;font-size:13.5px;color:var(--ink-soft);padding-right:48px;white-space:nowrap}
   dd{font-size:14.5px}
-  .origin{
-    margin:30px 0 0;font-size:12.5px;color:var(--ink-soft);
-    display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
-  }
-  .origin em{
-    font-family:"Cormorant Garamond",serif;font-style:italic;
-    font-size:16px;color:var(--ink);
-  }
-  @media (max-width:560px){
-    dl{grid-template-columns:1fr}
-    dt{padding-bottom:0}
-    dd{padding-top:2px;padding-bottom:17px;border-top:none}
-  }
+  .origin{margin:34px 0 0;font-size:12.5px;color:var(--ink-soft);display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .origin em{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:17px;color:var(--ink)}
+  @media (max-width:560px){dl{grid-template-columns:1fr}dt{padding-bottom:0}dd{padding-top:2px;border-top:none}}
 
-  /* ─── contact ─── */
-  form{display:flex;flex-direction:column;gap:26px;max-width:540px}
+  /* ── contact ── */
+  form{display:flex;flex-direction:column;gap:28px;max-width:560px}
   .field{display:flex;flex-direction:column;gap:8px}
-  .field label{font-size:12px;letter-spacing:.1em;color:var(--ink-soft)}
+  .field label{font-size:12px;letter-spacing:.12em;color:var(--ink-soft)}
   .field input,.field textarea{
-    font-family:inherit;font-size:15px;color:var(--ink);
-    background:transparent;border:none;border-bottom:1px solid var(--rule);
-    padding:10px 2px;transition:border-color .18s;
+    font-family:inherit;font-size:15px;color:var(--ink);background:transparent;
+    border:none;border-bottom:1.5px solid rgba(47,68,52,.6);border-radius:0;padding:10px 2px;transition:border-color .2s;
   }
-  .field textarea{resize:vertical;min-height:110px;line-height:1.95}
-  .field input:focus,.field textarea:focus{outline:none;border-bottom-color:var(--olive)}
+  .field textarea{resize:vertical;min-height:120px;line-height:1.95}
+  .field input:focus,.field textarea:focus{outline:none;border-bottom:2px solid var(--olive)}
   button{
-    font-family:"Cormorant Garamond",serif;font-size:16px;letter-spacing:.18em;
-    align-self:flex-start;margin-top:6px;
-    background:var(--ink);color:var(--paper);border:none;border-radius:0;
-    padding:15px 46px;cursor:pointer;transition:opacity .18s;
+    font-family:"Cormorant Garamond",serif;font-size:16px;letter-spacing:.2em;
+    align-self:flex-start;margin-top:8px;background:var(--ink);color:var(--paper);
+    border:none;border-radius:0;padding:16px 50px;cursor:pointer;transition:background .2s;
   }
-  button:hover{opacity:.86}
+  button:hover{background:#243529}
   button:focus-visible{outline:2px solid var(--olive);outline-offset:3px}
-  .done{font-size:14px;margin:0;line-height:2.1}
+  .done{font-size:14.5px;margin:0;line-height:2.1}
+  .contact-lead{
+    font-family:"Shippori Mincho B1",serif;font-weight:400;
+    font-size:clamp(17px,2.8vw,22px);line-height:1.9;letter-spacing:.04em;margin:0 0 30px;
+  }
+  .mail{
+    display:inline-block;font-family:"Cormorant Garamond",serif;
+    font-size:clamp(22px,4vw,32px);letter-spacing:.06em;color:var(--ink);text-decoration:none;
+    padding-bottom:6px;border-bottom:2px solid var(--olive);transition:border-color .2s;
+  }
+  .mail:hover{border-bottom-color:var(--ink)}
 
-  /* ─── footer ─── */
+  /* ── footer ── */
   footer{border-top:1px solid var(--rule)}
-  footer .inner{
-    display:flex;flex-wrap:wrap;gap:12px 28px;
-    align-items:center;justify-content:space-between;
-    padding-block:26px;font-size:12px;color:var(--ink-soft);
+  footer .inner{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;justify-content:space-between;padding-block:28px;font-size:12px;color:var(--ink-soft)}
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .drift{animation:none}
+    *{transition:none!important}
   }
 </style>
-
+</head>
+<body>
 <header class="nav pad">
   <div class="inner">
-    <a class="brand" href="#top">
-      <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
-        <circle cx="9" cy="9" r="6" fill="none" stroke="#2F4434" stroke-width="1.2"/>
-        <circle cx="23" cy="9" r="3" fill="#C9C36E"/>
-        <circle cx="9" cy="23" r="3" fill="#C9C36E"/>
-        <circle cx="23" cy="23" r="6" fill="none" stroke="#2F4434" stroke-width="1.2"/>
+    <a class="brand" href="#top" aria-label="株式会社Siu">
+      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
+        <circle cx="10" cy="10" r="6.5" fill="none" stroke="#2F4434" stroke-width="1.2"/>
+        <circle cx="24" cy="10" r="3.2" fill="#C9C36E"/>
+        <circle cx="10" cy="24" r="3.2" fill="#C9C36E"/>
+        <circle cx="24" cy="24" r="6.5" fill="none" stroke="#2F4434" stroke-width="1.2"/>
       </svg>
       <span>Siu</span>
     </a>
@@ -228,22 +222,25 @@
 
   <div class="hero pad">
     <div class="inner">
-      <div class="hero-art" aria-hidden="true">
-        <svg viewBox="0 0 520 520" fill="none">
-          <circle cx="300" cy="260" r="196" stroke="#2F4434" stroke-width="1.2" opacity=".5"/>
-          <path d="M300 64a196 196 0 0 1 0 392z" fill="#C9C36E" opacity=".5"/>
-          <circle cx="300" cy="260" r="74" fill="#2F4434"/>
-          <g stroke="#2F4434" stroke-width="1.2" opacity=".45">
-            <path d="M40 400h440"/>
-            <path d="M40 424h340"/>
-            <path d="M40 448h240"/>
+      <div class="art" aria-hidden="true">
+        <svg viewBox="0 0 560 560" fill="none">
+          <circle cx="320" cy="270" r="214" stroke="#2F4434" stroke-width="1.2" opacity=".55"/>
+          <path d="M320 56a214 214 0 0 1 0 428z" fill="#C9C36E" opacity=".55"/>
+          <circle cx="320" cy="270" r="82" fill="#2F4434"/>
+          <circle cx="140" cy="118" r="10" fill="#2F4434"/>
+          <circle cx="172" cy="118" r="10" fill="none" stroke="#2F4434" stroke-width="1.2"/>
+          <g class="drift" stroke="#2F4434" stroke-width="1.2" opacity=".5">
+            <path d="M20 430h520"/>
+            <path d="M20 456h380"/>
+            <path d="M20 482h250"/>
           </g>
-          <path d="M40 412h440" stroke="#C9C36E" stroke-width="3"/>
+          <path d="M20 443h520" stroke="#C9C36E" stroke-width="3"/>
         </svg>
       </div>
-      <div class="hero-copy">
-        <p class="latin">Siu Inc.</p>
-        <h1>その高鳴り、<br>偶然じゃない。</h1>
+      <div class="copy">
+        <p class="kicker">Siu Inc. — Yokohama</p>
+        <h1>いい日は、<br>つくれる。</h1>
+        <p class="sub">その高鳴り、偶然じゃない。</p>
       </div>
     </div>
   </div>
@@ -253,27 +250,30 @@
       <p class="eyebrow">Service</p>
       <div class="svc">
         <div class="svc-item">
-          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-            <circle cx="32" cy="32" r="25" stroke="#2F4434" stroke-width="1.2"/>
-            <path d="M32 7a25 25 0 0 1 0 50z" fill="#C9C36E"/>
+          <span class="n">01</span>
+          <svg width="72" height="72" viewBox="0 0 72 72" fill="none" aria-hidden="true">
+            <circle cx="36" cy="36" r="28" stroke="#2F4434" stroke-width="1.2"/>
+            <path d="M36 8a28 28 0 0 1 0 56z" fill="#C9C36E"/>
           </svg>
           <h2>来店企画の設計</h2>
         </div>
         <div class="svc-item">
-          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-            <circle cx="16" cy="20" r="8" fill="#2F4434"/>
-            <circle cx="40" cy="20" r="8" stroke="#2F4434" stroke-width="1.2"/>
-            <circle cx="16" cy="44" r="8" stroke="#2F4434" stroke-width="1.2"/>
-            <circle cx="40" cy="44" r="8" fill="#C9C36E"/>
+          <span class="n">02</span>
+          <svg width="72" height="72" viewBox="0 0 72 72" fill="none" aria-hidden="true">
+            <circle cx="20" cy="22" r="9" fill="#2F4434"/>
+            <circle cx="46" cy="22" r="9" stroke="#2F4434" stroke-width="1.2"/>
+            <circle cx="20" cy="50" r="9" stroke="#2F4434" stroke-width="1.2"/>
+            <circle cx="46" cy="50" r="9" fill="#C9C36E"/>
           </svg>
           <h2>実戦スタッフの<br>手配・運営</h2>
         </div>
         <div class="svc-item">
-          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-            <path d="M6 22h52" stroke="#2F4434" stroke-width="1.2"/>
-            <path d="M6 32h38" stroke="#C9C36E" stroke-width="3"/>
-            <path d="M6 42h52" stroke="#2F4434" stroke-width="1.2"/>
-            <circle cx="50" cy="32" r="7" fill="#2F4434"/>
+          <span class="n">03</span>
+          <svg width="72" height="72" viewBox="0 0 72 72" fill="none" aria-hidden="true">
+            <path d="M8 24h56" stroke="#2F4434" stroke-width="1.2"/>
+            <path d="M8 36h40" stroke="#C9C36E" stroke-width="3"/>
+            <path d="M8 48h56" stroke="#2F4434" stroke-width="1.2"/>
+            <circle cx="56" cy="36" r="8" fill="#2F4434"/>
           </svg>
           <h2>SNSを使った<br>集客支援</h2>
         </div>
@@ -282,43 +282,53 @@
   </section>
 
   <section id="siu" class="siu pad">
+    <div class="siu-bg" aria-hidden="true"></div>
     <div class="inner">
       <p class="eyebrow">Our name</p>
       <div class="siu-list">
-        <div class="siu-row">
-          <div class="siu-mark"><span class="siu-letter">S</span></div>
+        <div class="row">
+          <span class="letter">S</span>
           <div>
-            <p class="siu-word">Simple</p>
-            <p class="siu-body">やることを増やさない。集客に効かない工程は提案から外します。</p>
+            <p class="word">Simple</p>
+            <p class="body">やることを増やさない。集客に効かない工程は提案から外します。</p>
           </div>
         </div>
-        <div class="siu-row">
-          <div class="siu-mark"><span class="siu-letter">I</span></div>
+        <div class="row">
+          <span class="letter">I</span>
           <div>
-            <p class="siu-word">Integrity</p>
-            <p class="siu-body">稼働の実績も収支も、記録に残っているものだけをご報告します。数字は動かしません。</p>
+            <p class="word">Integrity</p>
+            <p class="body">稼働の実績も収支も、記録に残っているものだけをご報告します。数字は動かしません。</p>
           </div>
         </div>
-        <div class="siu-row">
-          <div class="siu-mark"><span class="siu-letter">U</span></div>
+        <div class="row">
+          <span class="letter">U</span>
           <div>
-            <p class="siu-word">Ultimate</p>
-            <p class="siu-body">単純なことを続けた先にしか、結果は出ない。そう考えています。</p>
+            <p class="word">Ultimate</p>
+            <p class="body">単純なことを続けた先にしか、結果は出ない。そう考えています。</p>
           </div>
         </div>
       </div>
+      <p class="motto">Simple is ultimate.</p>
     </div>
   </section>
 
   <section id="area" class="area pad">
     <div class="inner">
-      <p class="eyebrow" style="margin-bottom:0">Area</p>
-      <p class="big">関東圏を幅広く支援しています。</p>
-      <div class="lines" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <div>
+        <p class="eyebrow">Area</p>
+        <p class="big">関東圏を幅広く支援しています。</p>
+      </div>
+      <svg width="200" height="120" viewBox="0 0 200 120" fill="none" aria-hidden="true">
+        <path d="M0 40h200" stroke="#2F4434" stroke-width="1.2" opacity=".5"/>
+        <path d="M0 56h150" stroke="#C9C36E" stroke-width="3"/>
+        <path d="M0 72h100" stroke="#2F4434" stroke-width="1.2" opacity=".5"/>
+        <path d="M0 88h50" stroke="#2F4434" stroke-width="1.2" opacity=".5"/>
+        <circle cx="168" cy="20" r="14" fill="#2F4434"/>
+      </svg>
     </div>
   </section>
 
-  <section id="company" class="pad">
+  <section id="company" class="company pad">
     <div class="inner">
       <p class="eyebrow">Company</p>
       <dl>
@@ -326,33 +336,14 @@
         <dt>所在地</dt><dd>〒220-0072　神奈川県横浜市西区浅間町1-4-3　ウィザードビル402</dd>
         <dt>事業内容</dt><dd>広告代理業</dd>
       </dl>
-      <p class="origin"><em>Simple is ultimate.</em><span>── 社名Siuの由来です。</span></p>
     </div>
   </section>
 
   <section id="contact" class="pad">
     <div class="inner">
       <p class="eyebrow">Contact</p>
-      <form id="f">
-        <div class="field">
-          <label for="c1">貴社名</label>
-          <input type="text" id="c1" name="company" autocomplete="organization">
-        </div>
-        <div class="field">
-          <label for="c2">ご担当者名</label>
-          <input type="text" id="c2" name="name" autocomplete="name" required>
-        </div>
-        <div class="field">
-          <label for="c3">メールアドレス</label>
-          <input type="email" id="c3" name="email" autocomplete="email" required>
-        </div>
-        <div class="field">
-          <label for="c4">お問い合わせ内容</label>
-          <textarea id="c4" name="body" required></textarea>
-        </div>
-        <button type="submit">送信</button>
-      </form>
-      <p class="done" id="done" hidden>お問い合わせを受け付けました。<br>内容を確認のうえ、折り返しご連絡いたします。</p>
+      <p class="contact-lead">ご相談・お見積りは、メールでお受けしています。</p>
+      <a class="mail" href="mailto:s_suzuki@siu-inc.com">s_suzuki@siu-inc.com</a>
     </div>
   </section>
 
@@ -361,14 +352,8 @@
 <footer class="pad">
   <div class="inner">
     <span>© 株式会社Siu</span>
-    <span style="font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:.14em;">Siu Inc.</span>
+    <span class="serif" style="font-size:15px;letter-spacing:.16em;">Siu Inc.</span>
   </div>
 </footer>
-
-<script>
-  document.getElementById("f").addEventListener("submit", function(e){
-    e.preventDefault();
-    this.hidden = true;
-    document.getElementById("done").hidden = false;
-  });
-</script>
+</body>
+</html>
