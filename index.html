@@ -1,0 +1,374 @@
+<title>株式会社Siu</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Shippori+Mincho+B1:wght@400;500&family=Noto+Sans+JP:wght@300;400&display=swap">
+<style>
+  :root{
+    --paper:#F3EDE2;
+    --ink:#2F4434;
+    --ink-soft:#6B7A6D;
+    --olive:#C9C36E;
+    --rule:rgba(47,68,52,.16);
+    --paper-on-dark:#F3EDE2;
+    --rule-on-dark:rgba(243,237,226,.2);
+    --step:clamp(72px,11vw,132px);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Noto Sans JP",system-ui,sans-serif;
+    font-weight:300;
+    font-size:15px;
+    line-height:2.05;
+    -webkit-font-smoothing:antialiased;
+  }
+  .pad{padding-inline:24px}
+  .inner{max-width:1040px;margin:0 auto}
+
+  /* ─── nav ─── */
+  .nav{
+    position:sticky;top:0;z-index:20;
+    background:var(--paper);
+    border-bottom:1px solid var(--rule);
+  }
+  .nav .inner{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:16px;padding-block:16px;
+  }
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+  .brand span{
+    font-family:"Cormorant Garamond",serif;font-size:27px;line-height:1;
+    letter-spacing:.07em;
+  }
+  .nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0}
+  .nav a{
+    font-size:12px;letter-spacing:.1em;color:var(--ink-soft);
+    text-decoration:none;transition:color .18s;
+  }
+  .nav a:hover,.nav a:focus-visible{color:var(--ink)}
+  .nav a:focus-visible,.brand:focus-visible{outline:2px solid var(--olive);outline-offset:4px}
+  @media (max-width:660px){ .nav ul{display:none} }
+
+  /* ─── hero ─── */
+  .hero{position:relative;overflow:hidden}
+  .hero .inner{
+    position:relative;
+    min-height:clamp(420px,72vh,600px);
+    display:flex;align-items:center;
+    padding-block:var(--step);
+  }
+  .hero-art{
+    position:absolute;inset:0;
+    pointer-events:none;
+  }
+  .hero-art svg{
+    position:absolute;right:-6%;top:50%;transform:translateY(-50%);
+    width:min(560px,68vw);height:auto;
+  }
+  .hero-copy{position:relative;z-index:1}
+  .hero h1{
+    font-family:"Shippori Mincho B1",serif;font-weight:500;
+    font-size:clamp(30px,6.6vw,60px);
+    line-height:1.45;letter-spacing:.03em;
+    margin:0;text-wrap:balance;
+  }
+  .hero .latin{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:14px;letter-spacing:.18em;color:var(--olive);
+    margin:0 0 30px;
+  }
+
+  /* ─── section frame ─── */
+  section{border-top:1px solid var(--rule)}
+  section > .inner{padding-block:var(--step)}
+  .eyebrow{
+    font-family:"Cormorant Garamond",serif;
+    font-size:12px;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--olive);margin:0 0 34px;
+  }
+
+  /* ─── services ─── */
+  .svc{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:48px 40px;
+  }
+  .svc-item{display:flex;flex-direction:column;gap:22px}
+  .svc-item svg{display:block}
+  .svc-item h2{
+    font-family:"Shippori Mincho B1",serif;font-weight:400;
+    font-size:clamp(17px,2.6vw,20px);line-height:1.7;
+    margin:0;letter-spacing:.04em;
+  }
+
+  /* ─── siu (dark) ─── */
+  .siu{
+    background:var(--ink);color:var(--paper-on-dark);
+    border-top:none;
+  }
+  .siu .eyebrow{color:var(--olive)}
+  .siu-list{display:flex;flex-direction:column}
+  .siu-row{
+    display:grid;grid-template-columns:120px 1fr;
+    gap:10px 40px;align-items:start;
+    padding-block:38px;
+    border-top:1px solid var(--rule-on-dark);
+  }
+  .siu-row:first-child{border-top:none;padding-top:0}
+  .siu-row:last-child{padding-bottom:0}
+  .siu-mark{display:flex;align-items:baseline;gap:14px}
+  .siu-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:300;
+    font-size:clamp(46px,9vw,62px);line-height:.85;color:var(--olive);
+  }
+  .siu-word{
+    font-family:"Cormorant Garamond",serif;font-size:17px;
+    letter-spacing:.14em;color:var(--paper-on-dark);margin:0 0 10px;
+  }
+  .siu-body{
+    margin:0;font-size:14px;line-height:2.15;
+    max-width:44ch;color:rgba(243,237,226,.82);
+  }
+  @media (max-width:620px){
+    .siu-row{grid-template-columns:1fr;gap:14px}
+    .siu-mark{gap:10px}
+    .siu-letter{font-size:44px}
+  }
+
+  /* ─── area ─── */
+  .area .inner{display:flex;flex-direction:column;gap:34px}
+  .area p.big{
+    font-family:"Shippori Mincho B1",serif;font-weight:400;
+    font-size:clamp(20px,4vw,30px);line-height:1.8;
+    margin:0;letter-spacing:.04em;
+  }
+  .lines{display:flex;flex-direction:column;gap:9px;max-width:420px}
+  .lines i{display:block;height:1px;background:var(--ink);opacity:.5}
+  .lines i:nth-child(1){width:100%}
+  .lines i:nth-child(2){width:78%;height:2px;opacity:.9;background:var(--olive)}
+  .lines i:nth-child(3){width:54%}
+  .lines i:nth-child(4){width:30%}
+
+  /* ─── company ─── */
+  dl{margin:0;display:grid;grid-template-columns:auto 1fr}
+  dt,dd{padding-block:17px;margin:0;border-top:1px solid var(--rule)}
+  dt{
+    font-family:"Shippori Mincho B1",serif;font-size:13.5px;
+    color:var(--ink-soft);padding-right:44px;white-space:nowrap;
+  }
+  dd{font-size:14.5px}
+  .origin{
+    margin:30px 0 0;font-size:12.5px;color:var(--ink-soft);
+    display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
+  }
+  .origin em{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:16px;color:var(--ink);
+  }
+  @media (max-width:560px){
+    dl{grid-template-columns:1fr}
+    dt{padding-bottom:0}
+    dd{padding-top:2px;padding-bottom:17px;border-top:none}
+  }
+
+  /* ─── contact ─── */
+  form{display:flex;flex-direction:column;gap:26px;max-width:540px}
+  .field{display:flex;flex-direction:column;gap:8px}
+  .field label{font-size:12px;letter-spacing:.1em;color:var(--ink-soft)}
+  .field input,.field textarea{
+    font-family:inherit;font-size:15px;color:var(--ink);
+    background:transparent;border:none;border-bottom:1px solid var(--rule);
+    padding:10px 2px;transition:border-color .18s;
+  }
+  .field textarea{resize:vertical;min-height:110px;line-height:1.95}
+  .field input:focus,.field textarea:focus{outline:none;border-bottom-color:var(--olive)}
+  button{
+    font-family:"Cormorant Garamond",serif;font-size:16px;letter-spacing:.18em;
+    align-self:flex-start;margin-top:6px;
+    background:var(--ink);color:var(--paper);border:none;border-radius:0;
+    padding:15px 46px;cursor:pointer;transition:opacity .18s;
+  }
+  button:hover{opacity:.86}
+  button:focus-visible{outline:2px solid var(--olive);outline-offset:3px}
+  .done{font-size:14px;margin:0;line-height:2.1}
+
+  /* ─── footer ─── */
+  footer{border-top:1px solid var(--rule)}
+  footer .inner{
+    display:flex;flex-wrap:wrap;gap:12px 28px;
+    align-items:center;justify-content:space-between;
+    padding-block:26px;font-size:12px;color:var(--ink-soft);
+  }
+</style>
+
+<header class="nav pad">
+  <div class="inner">
+    <a class="brand" href="#top">
+      <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
+        <circle cx="9" cy="9" r="6" fill="none" stroke="#2F4434" stroke-width="1.2"/>
+        <circle cx="23" cy="9" r="3" fill="#C9C36E"/>
+        <circle cx="9" cy="23" r="3" fill="#C9C36E"/>
+        <circle cx="23" cy="23" r="6" fill="none" stroke="#2F4434" stroke-width="1.2"/>
+      </svg>
+      <span>Siu</span>
+    </a>
+    <ul>
+      <li><a href="#service">事業内容</a></li>
+      <li><a href="#siu">SIU</a></li>
+      <li><a href="#area">対応エリア</a></li>
+      <li><a href="#company">会社概要</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+
+  <div class="hero pad">
+    <div class="inner">
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 520 520" fill="none">
+          <circle cx="300" cy="260" r="196" stroke="#2F4434" stroke-width="1.2" opacity=".5"/>
+          <path d="M300 64a196 196 0 0 1 0 392z" fill="#C9C36E" opacity=".5"/>
+          <circle cx="300" cy="260" r="74" fill="#2F4434"/>
+          <g stroke="#2F4434" stroke-width="1.2" opacity=".45">
+            <path d="M40 400h440"/>
+            <path d="M40 424h340"/>
+            <path d="M40 448h240"/>
+          </g>
+          <path d="M40 412h440" stroke="#C9C36E" stroke-width="3"/>
+        </svg>
+      </div>
+      <div class="hero-copy">
+        <p class="latin">Siu Inc.</p>
+        <h1>その高鳴り、<br>偶然じゃない。</h1>
+      </div>
+    </div>
+  </div>
+
+  <section id="service" class="pad">
+    <div class="inner">
+      <p class="eyebrow">Service</p>
+      <div class="svc">
+        <div class="svc-item">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <circle cx="32" cy="32" r="25" stroke="#2F4434" stroke-width="1.2"/>
+            <path d="M32 7a25 25 0 0 1 0 50z" fill="#C9C36E"/>
+          </svg>
+          <h2>来店企画の設計</h2>
+        </div>
+        <div class="svc-item">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <circle cx="16" cy="20" r="8" fill="#2F4434"/>
+            <circle cx="40" cy="20" r="8" stroke="#2F4434" stroke-width="1.2"/>
+            <circle cx="16" cy="44" r="8" stroke="#2F4434" stroke-width="1.2"/>
+            <circle cx="40" cy="44" r="8" fill="#C9C36E"/>
+          </svg>
+          <h2>実戦スタッフの<br>手配・運営</h2>
+        </div>
+        <div class="svc-item">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <path d="M6 22h52" stroke="#2F4434" stroke-width="1.2"/>
+            <path d="M6 32h38" stroke="#C9C36E" stroke-width="3"/>
+            <path d="M6 42h52" stroke="#2F4434" stroke-width="1.2"/>
+            <circle cx="50" cy="32" r="7" fill="#2F4434"/>
+          </svg>
+          <h2>SNSを使った<br>集客支援</h2>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="siu" class="siu pad">
+    <div class="inner">
+      <p class="eyebrow">Our name</p>
+      <div class="siu-list">
+        <div class="siu-row">
+          <div class="siu-mark"><span class="siu-letter">S</span></div>
+          <div>
+            <p class="siu-word">Simple</p>
+            <p class="siu-body">やることを増やさない。集客に効かない工程は提案から外します。</p>
+          </div>
+        </div>
+        <div class="siu-row">
+          <div class="siu-mark"><span class="siu-letter">I</span></div>
+          <div>
+            <p class="siu-word">Integrity</p>
+            <p class="siu-body">稼働の実績も収支も、記録に残っているものだけをご報告します。数字は動かしません。</p>
+          </div>
+        </div>
+        <div class="siu-row">
+          <div class="siu-mark"><span class="siu-letter">U</span></div>
+          <div>
+            <p class="siu-word">Ultimate</p>
+            <p class="siu-body">単純なことを続けた先にしか、結果は出ない。そう考えています。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="area" class="area pad">
+    <div class="inner">
+      <p class="eyebrow" style="margin-bottom:0">Area</p>
+      <p class="big">関東圏を幅広く支援しています。</p>
+      <div class="lines" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    </div>
+  </section>
+
+  <section id="company" class="pad">
+    <div class="inner">
+      <p class="eyebrow">Company</p>
+      <dl>
+        <dt>商号</dt><dd>株式会社Siu</dd>
+        <dt>所在地</dt><dd>〒220-0072　神奈川県横浜市西区浅間町1-4-3　ウィザードビル402</dd>
+        <dt>事業内容</dt><dd>広告代理業</dd>
+      </dl>
+      <p class="origin"><em>Simple is ultimate.</em><span>── 社名Siuの由来です。</span></p>
+    </div>
+  </section>
+
+  <section id="contact" class="pad">
+    <div class="inner">
+      <p class="eyebrow">Contact</p>
+      <form id="f">
+        <div class="field">
+          <label for="c1">貴社名</label>
+          <input type="text" id="c1" name="company" autocomplete="organization">
+        </div>
+        <div class="field">
+          <label for="c2">ご担当者名</label>
+          <input type="text" id="c2" name="name" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="c3">メールアドレス</label>
+          <input type="email" id="c3" name="email" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="c4">お問い合わせ内容</label>
+          <textarea id="c4" name="body" required></textarea>
+        </div>
+        <button type="submit">送信</button>
+      </form>
+      <p class="done" id="done" hidden>お問い合わせを受け付けました。<br>内容を確認のうえ、折り返しご連絡いたします。</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="pad">
+  <div class="inner">
+    <span>© 株式会社Siu</span>
+    <span style="font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:.14em;">Siu Inc.</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("f").addEventListener("submit", function(e){
+    e.preventDefault();
+    this.hidden = true;
+    document.getElementById("done").hidden = false;
+  });
+</script>
