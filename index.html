@@ -192,6 +192,13 @@ a{color:inherit}svg{display:block}
 .ft .word svg{width:100%;height:auto}
 .ft .word{color:var(--cream);opacity:.08}
 
+/* 進化 10/17：マーカー・読み進み具合・吸い付くボタン・塗られる文字（Motion Prompt #080 #079 #084） */
+.hero .sub .mk{color:var(--cream);background:linear-gradient(rgba(201,195,110,.5),rgba(201,195,110,.5)) no-repeat 0 82%/0% .38em;padding:0 .06em;animation:mk 1s var(--ease) 1.5s forwards}
+@keyframes mk{to{background-size:100% .38em}}
+.prog{position:fixed;left:0;top:0;height:2px;width:100%;z-index:70;background:var(--olive);transform-origin:0 50%;transform:scaleX(var(--p,0));pointer-events:none}
+.btn.mg{transition:transform .35s var(--ease),box-shadow .3s,filter .2s}
+.motto em{background:linear-gradient(90deg,var(--green),var(--green)) no-repeat 0 0/0% 100%;-webkit-background-clip:text;background-clip:text;transition:background-size 1.4s var(--ease) .3s}
+.motto.in em{background-size:100% 100%}
 /* 動き */
 .js .rv{opacity:0;transform:translateY(32px);filter:blur(6px);transition:opacity 1s var(--ease),transform 1s var(--ease),filter 1s var(--ease);transition-delay:var(--d,0s)}
 .js .rv.in{opacity:1;transform:none;filter:none}
@@ -201,7 +208,7 @@ a{color:inherit}svg{display:block}
 @keyframes fi{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 .js .orbit i{opacity:0;animation-name:pop,var(--an);animation-duration:1s,var(--du);animation-timing-function:cubic-bezier(.3,1.4,.4,1),ease-in-out;animation-delay:var(--pd),0s;animation-fill-mode:forwards,none;animation-iteration-count:1,infinite}
 @keyframes pop{from{opacity:0;transform:scale(0)}to{opacity:1;transform:scale(1)}}
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.js .rv,.js .fi,.js .orbit i{opacity:1;transform:none;filter:none}.js .hero h1 .ln>span{transform:none}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.js .rv,.js .fi,.js .orbit i{opacity:1;transform:none;filter:none}.hero .sub .mk{background-size:100% .38em}.prog{display:none}.motto em{background-size:100% 100%}.js .hero h1 .ln>span{transform:none}}
 
 @media (max-width:1024px){
   .nav{display:none}
@@ -242,6 +249,7 @@ a{color:inherit}svg{display:block}
 </head>
 <body>
 <a class="skip" href="#main">本文へ移動</a>
+<div class="prog" id="prog" aria-hidden="true"></div>
 <script>document.documentElement.classList.add('js')</script>
 <!-- ロゴ（外注のロゴが届いたら、この symbol の中身だけ差し替える） -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="logo" viewBox="179 285 666 447"><path d="M181 285L845 285L845 286L845 299L845 300L180 300L179 300L179 287L181 285ZM313 349L344 349Q361 350 376 354Q402 360 423 371L424 372L424 450L423 451L418 452L416 451Q407 428 395 410Q385 395 373 383Q361 372 345 366Q332 361 315 362Q286 365 272 383Q265 391 262 403Q260 410 261 420Q264 436 274 445Q284 454 298 460L366 488L392 501Q411 511 425 528Q436 540 442 559L444 573L444 585Q442 603 436 616Q428 631 416 642Q395 660 364 669L334 674L294 674Q264 673 240 666Q211 657 188 641L188 551L188 549L195 549L196 550Q213 600 247 634Q260 647 278 655L298 661Q306 663 317 662Q342 659 355 643Q367 630 368 607Q367 594 361 585Q356 575 347 569Q334 559 318 552L269 532L236 518Q219 509 206 496Q196 485 190 471Q186 459 186 443Q188 426 193 414Q201 397 214 385Q248 351 313 349ZM539 437L544 437L544 438L545 672L544 674L475 674L474 673L474 444L475 443L517 440L539 437ZM797 442L801 443L801 610Q802 623 805 632L812 641L821 645L832 645L833 646L834 649L833 651L738 674L736 670L735 645L734 637L730 641L722 649Q709 661 691 669Q677 675 657 674Q628 671 615 654Q603 639 601 617L600 483Q599 473 593 469Q586 466 576 466L575 462L577 460L664 443L668 443L668 453L668 607L669 622Q672 631 678 637Q685 645 700 644Q717 641 727 630L734 620L734 485Q734 474 728 470Q721 465 709 466L709 461L714 459L797 442ZM190 718L191 718L257 718L266 718L279 718L280 718L281 718L302 718L321 718L384 718L393 718L535 718L538 718L813 718L815 718L819 718L822 718L831 718L842 718L844 718L845 719L845 731L844 732L181 732L179 731L179 720L180 718L190 718Z" fill="currentColor" fill-rule="evenodd"/><path d="M505 344Q517 344 525 347Q535 352 541 360Q550 370 549 389Q546 405 536 414Q530 420 521 423Q513 425 504 424Q488 420 479 410Q474 403 471 395L470 382Q472 362 486 352Q493 346 505 344Z" fill="#C9C36E"/></symbol></defs></svg>
@@ -262,8 +270,8 @@ a{color:inherit}svg{display:block}
       <div>
         <p class="kicker fi" style="--d:.1s">Siu Inc.</p>
         <h1 id="h-hero" aria-label="本気になれる遊び場を。"><span class="ln" aria-hidden="true"><span style="--d:.2s">本気になれる</span></span><span class="ln" aria-hidden="true"><span class="b" style="--d:.34s">遊び場を。</span></span></h1>
-        <p class="sub fi" style="--d:.6s">その高鳴りを、無駄にしない。</p>
-        <div class="cta fi" style="--d:.75s"><a class="btn" href="#contact">お問い合わせ <span class="ar" aria-hidden="true">→</span></a><a class="btn line" href="#service">事業内容を見る</a></div>
+        <p class="sub fi" style="--d:.6s">楽しませる側が、<span class="mk">いちばん楽しむ。</span></p>
+        <div class="cta fi" style="--d:.75s"><a class="btn mg" href="#contact">お問い合わせ <span class="ar" aria-hidden="true">→</span></a><a class="btn line" href="#service">事業内容を見る</a></div>
       </div>
       <div class="orbit" aria-hidden="true">
         <span class="ring"></span><span class="ring r2"></span><span class="ring r3"></span><span class="hz"></span>
@@ -366,9 +374,11 @@ a{color:inherit}svg{display:block}
   const $=id=>document.getElementById(id);
   const hd=$("hd");const lts=[...document.querySelectorAll(".lt,.siu")];
   const onScroll=()=>{hd.classList.toggle("sc",scrollY>10);hd.classList.toggle("lt",lts.some(s=>{const r=s.getBoundingClientRect();return r.top<=34&&r.bottom>34;}));};
-  addEventListener("scroll",onScroll,{passive:true});onScroll();
+  const pg=$("prog");const prog=()=>{const h=document.documentElement.scrollHeight-innerHeight;pg.style.setProperty("--p",h>0?Math.min(1,scrollY/h):0);};
+  addEventListener("scroll",()=>{onScroll();prog();},{passive:true});addEventListener("resize",prog);onScroll();prog();
   if(matchMedia("(pointer:fine)").matches&&!reduce){
     document.querySelectorAll(".card").forEach(el=>el.addEventListener("pointermove",e=>{const r=el.getBoundingClientRect();el.style.setProperty("--mx",(e.clientX-r.left)+"px");el.style.setProperty("--my",(e.clientY-r.top)+"px");}));
+    document.querySelectorAll(".btn.mg").forEach(b=>{b.addEventListener("pointermove",e=>{const r=b.getBoundingClientRect();const x=e.clientX-r.left-r.width/2,y=e.clientY-r.top-r.height/2;b.style.transform=`translate(${x*.25}px,${y*.35}px)`;});b.addEventListener("pointerleave",()=>{b.style.transform="";});});
     const orb=document.querySelector(".orbit");if(orb)addEventListener("pointermove",e=>{const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;orb.style.transform=`translate(${x*-16}px,${y*-16}px)`;},{passive:true});
   }
   const rv=[...document.querySelectorAll(".rv")];
