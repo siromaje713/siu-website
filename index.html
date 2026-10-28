@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>株式会社Siu｜本気になれる遊び場を。</title>
-<meta name="description" content="株式会社Siuは、来店企画の設計、実戦スタッフの手配・運営、SNSを使った集客支援を行う広告代理業の会社です。">
+<meta name="description" content="株式会社Siuは、来店企画の設計、実戦スタッフの手配・運営、SNSを使った集客支援、検索・口コミ対策（SEO・MEO・AI検索対策）を行う広告代理業の会社です。">
 <meta property="og:title" content="株式会社Siu｜本気になれる遊び場を。">
-<meta property="og:description" content="来店企画の設計／実戦スタッフの手配・運営／SNSを使った集客支援">
+<meta property="og:description" content="来店企画の設計／実戦スタッフの手配・運営／SNSを使った集客支援／検索・口コミ対策（SEO・MEO・AI検索対策）">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#2F4434">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232F4434'/%3E%3Ccircle cx='21' cy='10' r='4.5' fill='%23C9C36E'/%3E%3C/svg%3E">
@@ -45,6 +45,10 @@ a{color:inherit}svg{display:block}
 .hd .wrap{display:flex;align-items:center;gap:32px;height:68px}
 .brand{display:flex;align-items:center;text-decoration:none;margin-right:auto;min-height:44px}
 .brand svg{height:54px;width:auto;aspect-ratio:2.024}
+.lg{position:relative;display:block;line-height:0}
+.azk{position:absolute;left:62.9%;top:28.3%;width:8.6%;height:17.4%;border-radius:50%;cursor:default}
+.azk::after{content:"大納言あずき";position:absolute;left:calc(100% + 10px);top:50%;transform:translate(-4px,-50%);white-space:nowrap;font:500 11px/1 var(--jp);letter-spacing:.2em;padding:7px 12px;border-radius:999px;background:var(--cream);color:var(--g-deep);opacity:0;pointer-events:none;transition:opacity .35s,transform .35s}
+.azk:hover::after{opacity:1;transform:translate(0,-50%)}
 .nav{display:flex;gap:30px}
 .nav a{font-size:14px;font-weight:500;text-decoration:none;opacity:.72;transition:opacity .2s}
 .nav a:hover,.nav a[aria-current]{opacity:1}
@@ -120,6 +124,11 @@ a{color:inherit}svg{display:block}
 .card:hover .plan i.on{transform:scale(1.08)}
 .flowline{display:flex;align-items:center;gap:10px;margin-top:22px;font:600 12px/1 var(--en);letter-spacing:.08em;color:var(--c70)}
 .flowline b{flex:1;height:1px;background:linear-gradient(90deg,var(--olive),var(--c12))}
+/* 04 AI検索 */
+.card.wide{grid-column:1/-1;min-height:280px}
+.lead4{font:500 15px/1.9 var(--jp);color:var(--c70);max-width:640px}
+.tags4{display:flex;flex-wrap:wrap;gap:10px}
+.tags4 span{font:700 14px/1 var(--en);letter-spacing:.12em;padding:12px 18px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--c12);color:var(--olive)}
 /* 02 スタッフ */
 .crew{display:flex}
 .crew i{width:64px;height:64px;border-radius:50%;margin-left:-14px;box-shadow:0 0 0 4px var(--green);display:block}
@@ -147,6 +156,7 @@ a{color:inherit}svg{display:block}
 .siu .b{margin-top:16px;font:500 clamp(18px,1.6vw,22px)/1.75 var(--jp);max-width:30em}
 .motto{margin-top:96px;text-align:center;font:700 clamp(44px,7vw,112px)/1 var(--en);letter-spacing:-.05em}
 .motto em{font-style:normal;color:transparent;-webkit-text-stroke:1.5px var(--green)}
+.azuki{margin-top:28px;text-align:center;font:500 12px/1 var(--jp);letter-spacing:.4em;opacity:.28}
 
 /* エリア */
 .area{background:var(--green);color:var(--cream);padding:140px 0;overflow:hidden;position:relative;isolation:isolate}
@@ -256,7 +266,7 @@ a{color:inherit}svg{display:block}
 
 <header class="hd" id="hd">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="株式会社Siu トップへ"><svg aria-hidden="true"><use href="#logo"/></svg></a>
+    <a class="brand" href="#top" aria-label="株式会社Siu トップへ"><span class="lg"><svg aria-hidden="true"><use href="#logo"/></svg><span class="azk" aria-hidden="true"></span></span></a>
     <nav class="nav" aria-label="サイト内"><a href="#service">事業内容</a><a href="#siu">SIU</a><a href="#area">対応エリア</a><a href="#company">会社概要</a></nav>
     <details class="mnav"><summary>メニュー</summary><div class="menu"><a href="#service">事業内容</a><a href="#siu">SIU</a><a href="#area">対応エリア</a><a href="#company">会社概要</a><a href="#contact">お問い合わせ</a></div></details>
     <a class="btn sm" href="#contact">お問い合わせ</a>
@@ -310,6 +320,12 @@ a{color:inherit}svg{display:block}
           <h3 class="ph">SNSを使った<br>集客支援</h3>
           <div class="vis feed" aria-hidden="true"><div class="post"><i></i><span></span><em>1.2k</em></div><div class="post"><i style="background:var(--olive)"></i><span style="flex:.7"></span><em>864</em></div></div>
         </article>
+        <article class="card wide rv" style="--d:.24s">
+          <p class="no">04</p>
+          <h3 class="ph">検索・口コミ対策</h3>
+          <p class="lead4">Google検索やGoogleマップ、ChatGPTなどのAIで探されたときに、お店の名前が上に出てくるように。お客さんの投稿や口コミが自然に増える仕組みも一緒につくります。</p>
+          <div class="vis tags4" aria-hidden="true"><span>SEO</span><span>MEO</span><span>AIO</span><span>LLMO</span><span>GEO</span><span>UGC</span></div>
+        </article>
       </div>
     </div>
   </section>
@@ -322,7 +338,8 @@ a{color:inherit}svg{display:block}
         <div class="row rv"><p class="L" aria-hidden="true"><span class="tx">I</span></p><div><p class="w">Integrity<small>誠実さ</small></p><p class="b ph">稼働の実績も収支も、記録に残っているものだけをご報告します。数字は動かしません。</p></div></div>
         <div class="row rv"><p class="L" aria-hidden="true"><span class="tx">U</span></p><div><p class="w">Ultimate<small>究極</small></p><p class="b ph">単純なことを続けた先にしか、結果は出ない。そう考えています。</p></div></div>
       </div>
-      <p class="motto rv">Simple is <em>ultimate.</em></p>
+      <p class="motto rv">Simple. Integrity. <em>Ultimate.</em></p>
+      <p class="azuki rv">大納言あずき</p>
     </div>
   </section>
 
@@ -339,7 +356,7 @@ a{color:inherit}svg{display:block}
       <dl class="rv">
         <dt>商号</dt><dd>株式会社Siu</dd>
         <dt>所在地</dt><dd>〒220-0072　神奈川県横浜市西区浅間町1-4-3　ウィザードビル402</dd>
-        <dt>事業内容</dt><dd>広告代理業</dd>
+        <dt>事業内容</dt><dd>広告代理業／SNSマーケティング／SEO・MEO対策／AI検索対策（AIO・LLMO・GEO）／UGC施策</dd>
       </dl>
     </div>
   </section>
@@ -363,7 +380,7 @@ a{color:inherit}svg{display:block}
   <div class="wrap">
     <div class="row"><a class="brand" href="#top" aria-label="株式会社Siu トップへ" style="color:var(--cream)"><svg aria-hidden="true" style="height:64px;aspect-ratio:2.024"><use href="#logo"/></svg></a>
       <nav aria-label="フッター"><a href="#service">事業内容</a><a href="#siu">SIU</a><a href="#area">対応エリア</a><a href="#company">会社概要</a><a href="#contact">お問い合わせ</a></nav></div>
-    <div class="bt"><span>© 株式会社Siu</span><span>Simple is ultimate.</span></div>
+    <div class="bt"><span>© 株式会社Siu</span><span>Simple. Integrity. Ultimate.</span></div>
     <div class="word" aria-hidden="true"><svg style="width:100%;aspect-ratio:2.024"><use href="#logo"/></svg></div>
   </div>
 </footer>
