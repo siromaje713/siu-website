@@ -149,7 +149,8 @@ a{color:inherit}svg{display:block}
 .siu .rows{border-top:1px solid var(--g12)}
 .siu .row{display:grid;grid-template-columns:260px 1fr;gap:48px;align-items:center;padding:48px 0;border-bottom:1px solid var(--g12)}
 .siu .L{font:700 clamp(140px,16vw,240px)/.8 var(--en);letter-spacing:-.06em;position:relative}
-.siu .row:nth-child(2) .L::after{content:"";position:absolute;left:12%;top:-22%;width:.22em;aspect-ratio:1;border-radius:50%;background:var(--olive)}
+.siu .row:nth-child(2) .L .tx{position:relative}
+.siu .row:nth-child(2) .L .tx::after{content:"";position:absolute;left:calc(50% + .03em);top:-.22em;transform:translateX(-50%);width:.2em;aspect-ratio:1;border-radius:50%;background:var(--olive)}
 .siu .L .tx{display:inline-block}
 .siu .w{font:700 clamp(28px,3vw,40px)/1.2 var(--en);letter-spacing:-.03em}
 .siu .w small{font:500 14px/1 var(--jp);color:var(--g70);margin-left:12px;letter-spacing:.02em}
