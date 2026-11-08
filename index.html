@@ -126,9 +126,35 @@ a{color:inherit}svg{display:block}
 .flowline b{flex:1;height:1px;background:linear-gradient(90deg,var(--olive),var(--c12))}
 /* 04 AI検索 */
 .card.wide{grid-column:1/-1;min-height:280px}
-.lead4{font:500 15px/1.9 var(--jp);color:var(--c70);max-width:640px}
-.tags4{display:flex;flex-wrap:wrap;gap:10px}
-.tags4 span{font:700 14px/1 var(--en);letter-spacing:.12em;padding:12px 18px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--c12);color:var(--olive)}
+.w4{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.t4{display:flex;flex-direction:column;gap:20px}
+.lead4{font:500 16px/1.9 var(--jp);color:var(--cream);max-width:560px}
+.pt4{list-style:none;display:grid;gap:10px}
+.pt4 li{display:flex;align-items:center;gap:14px;font:700 17px/1.4 var(--jp);padding:14px 18px;border-radius:16px;background:var(--c08);box-shadow:inset 0 0 0 1px var(--c12)}
+.pt4 b{font:600 12px/1 var(--en);letter-spacing:.12em;color:var(--olive)}
+.kw4{font:600 11px/1.6 var(--en);letter-spacing:.12em;color:var(--c55)}
+.srch{margin-top:0;display:grid;gap:10px;padding:22px;border-radius:24px;background:var(--g-deep);box-shadow:inset 0 0 0 1px var(--c12)}
+.sbar{display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:999px;background:var(--cream);color:var(--green);font:700 14px/1 var(--jp)}
+.sbar i{width:14px;height:14px;border-radius:50%;box-shadow:inset 0 0 0 2.5px var(--green);position:relative}
+.sbar i::after{content:"";position:absolute;width:6px;height:2.5px;background:var(--green);right:-5px;bottom:-1px;transform:rotate(45deg)}
+.res{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:16px;background:var(--c08)}
+.res em{font:700 13px/1 var(--en);font-style:normal;color:var(--c55);width:16px;text-align:center}
+.res>i{width:36px;height:36px;border-radius:10px;background:var(--c12);flex:0 0 auto}
+.res>div{flex:1;display:grid;gap:7px}
+.res>div>span{height:8px;border-radius:4px;background:var(--c12);width:78%}
+.res>div>span.s{width:44%;background:var(--c08)}
+.res.top{background:var(--olive);color:var(--green);box-shadow:0 0 28px rgba(201,195,110,.35);transform:scale(1.02)}
+.res.top em{color:var(--green)}
+.res.top>i{background:var(--green);border-radius:50% 50% 50% 0;transform:rotate(-45deg);width:30px;height:30px;margin:0 3px}
+.res.top strong{font:900 16px/1.2 var(--jp)}
+.res.top small{font:700 12px/1 var(--en);letter-spacing:.1em}
+.res.top small span{font:700 11px/1 var(--jp);letter-spacing:0;margin-left:6px}
+.ai{display:flex;gap:10px;align-items:flex-start;margin-top:6px}
+.ai b{flex:0 0 auto;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--cream);color:var(--green);font:700 11px/1 var(--en)}
+.ai p{background:var(--green);border-radius:4px 16px 16px 16px;padding:12px 14px;font:500 14px/1.6 var(--jp);color:var(--c70);box-shadow:inset 0 0 0 1px var(--c12)}
+.ai strong{color:var(--olive);font-weight:700}
+.card:hover .res.top{transform:scale(1.04);transition:transform .4s var(--ease)}
+@media (max-width:860px){.w4{grid-template-columns:1fr;gap:28px}}
 /* 02 スタッフ */
 .crew{display:flex}
 .crew i{width:64px;height:64px;border-radius:50%;margin-left:-14px;box-shadow:0 0 0 4px var(--green);display:block}
@@ -322,10 +348,26 @@ a{color:inherit}svg{display:block}
           <div class="vis feed" aria-hidden="true"><div class="post"><i></i><span></span><em>1.2k</em></div><div class="post"><i style="background:var(--olive)"></i><span style="flex:.7"></span><em>864</em></div></div>
         </article>
         <article class="card wide rv" style="--d:.24s">
-          <p class="no">04</p>
-          <h3 class="ph">検索・口コミ対策</h3>
-          <p class="lead4">Google検索やGoogleマップ、ChatGPTなどのAIで探されたときに、お店の名前が上に出てくるように。お客さんの投稿や口コミが自然に増える仕組みも一緒につくります。</p>
-          <div class="vis tags4" aria-hidden="true"><span>SEO</span><span>MEO</span><span>AIO</span><span>LLMO</span><span>GEO</span><span>UGC</span></div>
+          <div class="w4">
+            <div class="t4">
+              <p class="no">04</p>
+              <h3 class="ph">検索・口コミ対策</h3>
+              <p class="lead4 ph">検索でも、マップでも、AIに聞かれても。<br>お店の名前を、いちばん上に。</p>
+              <ul class="pt4">
+                <li><b>01</b>Googleマップで上位に</li>
+                <li><b>02</b>AIのおすすめに入る</li>
+                <li><b>03</b>口コミが自然に増える</li>
+              </ul>
+              <p class="kw4">SEO / MEO / AI検索対策（LLMO・GEO） / UGC</p>
+            </div>
+            <div class="vis srch" aria-hidden="true">
+              <div class="sbar"><i></i><span>近くの お店</span></div>
+              <div class="res top"><em>1</em><i></i><div><strong>あなたのお店</strong><small>★★★★★ <span>口コミ多数</span></small></div></div>
+              <div class="res"><em>2</em><i></i><div><span></span><span class="s"></span></div></div>
+              <div class="res"><em>3</em><i></i><div><span style="width:62%"></span><span class="s"></span></div></div>
+              <div class="ai"><b>AI</b><p>近くなら<strong>「あなたのお店」</strong>がおすすめです。</p></div>
+            </div>
+          </div>
         </article>
       </div>
     </div>
