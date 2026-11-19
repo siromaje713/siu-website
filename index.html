@@ -422,5 +422,50 @@ a{color:inherit}svg{display:block}
   document.querySelectorAll("input,textarea").forEach(i=>i.addEventListener("input",()=>i.removeAttribute("aria-invalid")));
 })();
 </script>
-<script>/* なめらかスクロールは、本人が操作してから有効にする（リロード時に上から勝手に流れないように） */(function(){var on=function(){document.documentElement.classList.add("sm");["pointerdown","keydown","wheel","touchstart"].forEach(function(e){removeEventListener(e,on,true)})};["pointerdown","keydown","wheel","touchstart"].forEach(function(e){addEventListener(e,on,{capture:true,passive:true})})})();</script></body>
+<script>/* なめらかスクロールは、本人が操作してから有効にする（リロード時に上から勝手に流れないように） */(function(){var on=function(){document.documentElement.classList.add("sm");["pointerdown","keydown","wheel","touchstart"].forEach(function(e){removeEventListener(e,on,true)})};["pointerdown","keydown","wheel","touchstart"].forEach(function(e){addEventListener(e,on,{capture:true,passive:true})})})();</script><style>
+.marquee .tr{will-change:transform}
+.btn:active{transform:scale(.97)}
+[data-focus].fx>*{opacity:.3;transition:opacity .5s ease,transform .5s ease}[data-focus].fx>*.on{opacity:1}
+
+/* 色の切り替わりを「上にかぶさる丸い紙」に */
+.siu,.area,.company,.ft{position:relative;border-radius:28px 28px 0 0;margin-top:-28px;z-index:1}
+.svc-sec{padding-bottom:calc(var(--pb,120px) + 28px)}
+@media (max-width:900px){
+  /* 事業内容：カードが重なって積み上がる */
+  .svc{display:block}
+  .svc .card{position:sticky;top:calc(76px + var(--k,0) * 14px);margin-bottom:22px;box-shadow:0 -22px 44px -26px rgba(0,0,0,.75),inset 0 0 0 1px var(--c12)}
+  .svc .card:nth-child(2){--k:1}.svc .card:nth-child(3){--k:2}.svc .card:nth-child(4){--k:3}
+}
+@media (max-width:700px){
+  /* 最初の画面：見出しを一番上に、図形は背景へ */
+  .hero{padding-top:128px}
+  .hero .wrap{position:relative}
+  .hero{min-height:100svh;align-items:flex-start}.hero .orbit{position:absolute;right:-22%;top:auto;bottom:-64svh;width:96%;margin:0;opacity:.9;z-index:0;pointer-events:none;transform:translateY(calc(var(--sy,0) * -.12px)) rotate(calc(var(--sy,0) * .05deg))}
+  .hero .wrap>*:not(.orbit){position:relative;z-index:1}
+  .hero h1{font-size:clamp(46px,14vw,64px);line-height:1.12}
+  /* 下に固定のお問い合わせボタン */
+  .dcta{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:50;transform:translateY(160%);transition:transform .45s var(--ease)}
+  .dcta.show{transform:none}.dcta .btn{width:100%;box-shadow:0 14px 34px -12px rgba(0,0,0,.55)}
+}
+@media (min-width:701px){.dcta{display:none}}
+</style><script>(function(){var r=document.querySelector(".siu .rows");if(r)r.setAttribute("data-focus","");})();
+(function(){
+  var reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
+  /* 帯の文字：スクロールの速さに合わせて流れが速くなり、少し傾く */
+  var tr=document.querySelectorAll(".marquee .tr");var last=scrollY,v=0,raf=0;
+  function tick(){v*=.9;var a=Math.min(7,Math.abs(v)*.035);tr.forEach(function(t){var an=t.getAnimations&&t.getAnimations()[0];if(an)an.playbackRate=1+a;t.parentNode.style.setProperty("--sk",(Math.max(-6,Math.min(6,v*.04)))+"deg");});
+    document.documentElement.style.setProperty("--sy",scrollY);if(Math.abs(v)>.2)raf=requestAnimationFrame(tick);else{raf=0;}}
+  if(!reduce)addEventListener("scroll",function(){v=scrollY-last;last=scrollY;if(!raf)raf=requestAnimationFrame(tick);},{passive:true});
+  /* 画面の真ん中に来た行だけをはっきり見せる */
+  var rows=document.querySelectorAll("[data-focus]>*");
+  if(rows.length&&"IntersectionObserver" in window&&!reduce){document.querySelectorAll("[data-focus]").forEach(function(e){e.classList.add("fx")});
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){e.target.classList.toggle("on",e.isIntersecting)})},{rootMargin:"-32% 0px -32% 0px"});rows.forEach(function(r){io.observe(r)});}
+})();
+
+(function(){var r=document.querySelector(".siu .rows");if(r)r.setAttribute("data-focus","");})();
+(function(){var d=document.createElement("div");d.className="dcta";d.innerHTML='<a class="btn" href="#contact">お問い合わせ <span aria-hidden="true">→</span></a>';document.body.appendChild(d);
+  var hero=document.querySelector(".hero"),con=document.getElementById("contact");
+  function up(){var show=scrollY>(hero?hero.offsetHeight*.7:500);if(con){var r=con.getBoundingClientRect();if(r.top<innerHeight*.8)show=false;}d.classList.toggle("show",show);}
+  addEventListener("scroll",up,{passive:true});up();})();
+</script></body>
 </html>
