@@ -24,7 +24,7 @@
   --wrap:1240px;--ease:cubic-bezier(.2,.7,.1,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;background:var(--g-deep)}
+html.sm{scroll-behavior:smooth}html{-webkit-text-size-adjust:100%;background:var(--g-deep)}
 body{background:var(--cream);color:var(--green);font:400 17px/1.8 var(--jp);letter-spacing:.01em;-webkit-font-smoothing:antialiased;overflow-x:clip}
 a{color:inherit}svg{display:block}
 :focus-visible{outline:2px solid var(--olive);outline-offset:3px;border-radius:6px}
@@ -211,7 +211,7 @@ a{color:inherit}svg{display:block}
 .motto em{background:linear-gradient(90deg,var(--green),var(--green)) no-repeat 0 0/0% 100%;-webkit-background-clip:text;background-clip:text;transition:background-size 1.4s var(--ease) .3s}
 .motto.in em{background-size:100% 100%}
 /* 動き */
-.js .rv{opacity:0;transform:translateY(32px);filter:blur(6px);transition:opacity 1s var(--ease),transform 1s var(--ease),filter 1s var(--ease);transition-delay:var(--d,0s)}
+.js .rv{opacity:0;transform:translateY(20px);transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:var(--d,0s)}
 .js .rv.in{opacity:1;transform:none;filter:none}
 .js .hero h1 .ln>span{transform:translateY(105%);animation:up 1.1s var(--ease) forwards;animation-delay:var(--d)}
 @keyframes up{to{transform:none}}
@@ -257,7 +257,7 @@ a{color:inherit}svg{display:block}
   .form{padding:24px;border-radius:22px}
 }
 </style>
-</head>
+<style>/* リロード・戻る操作のときは、最初の登場アニメーションをやり直さない */.skip .hero h1 .ln>span{animation:none!important;transform:none!important}.skip .fi,.skip .hero .fi{animation:none!important;opacity:1!important}.skip .orbit i{opacity:1!important;animation-name:var(--an)!important;animation-duration:var(--du)!important;animation-delay:0s!important;animation-iteration-count:infinite!important;animation-timing-function:ease-in-out!important;animation-fill-mode:none!important}</style><script>(function(){try{var n=performance.getEntriesByType("navigation")[0];if(n&&(n.type==="reload"||n.type==="back_forward"))document.documentElement.classList.add("skip")}catch(e){}})();</script></head>
 <body>
 <a class="skip" href="#main">本文へ移動</a>
 <div class="prog" id="prog" aria-hidden="true"></div>
@@ -401,7 +401,11 @@ a{color:inherit}svg{display:block}
   }
   const rv=[...document.querySelectorAll(".rv")];
   if(reduce||!("IntersectionObserver" in window)){rv.forEach(e=>e.classList.add("in"));}
-  else{const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}}),{rootMargin:"0px 0px -8% 0px",threshold:.05});rv.forEach(e=>io.observe(e));
+  else{const vh=()=>window.innerHeight||document.documentElement.clientHeight;
+    /* 読み込み時点で画面内・画面より上にある物は、動かさずに最初から表示（リロードで途中から始まっても空白にならない） */
+    const settle=()=>rv.forEach(e=>{if(!e.classList.contains("in")&&e.getBoundingClientRect().top<vh()*.98){e.style.transition="none";e.classList.add("in");requestAnimationFrame(()=>requestAnimationFrame(()=>{e.style.transition="";}));}});
+    settle();window.addEventListener("pageshow",settle);window.addEventListener("load",()=>setTimeout(settle,60));
+    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting||e.boundingClientRect.top<0){e.target.classList.add("in");io.unobserve(e.target);}}),{rootMargin:"0px 0px -6% 0px",threshold:0});rv.forEach(e=>{if(!e.classList.contains("in"))io.observe(e);});
     const links=[...document.querySelectorAll(".nav a")];const map=new Map(links.map(a=>[a.getAttribute("href").slice(1),a]));
     const so=new IntersectionObserver(es=>es.forEach(e=>{const a=map.get(e.target.id);if(a&&e.isIntersecting){links.forEach(l=>l.removeAttribute("aria-current"));a.setAttribute("aria-current","true");}}),{rootMargin:"-45% 0px -50% 0px"});
     map.forEach((a,id)=>{const s=document.getElementById(id);if(s)so.observe(s);});}
@@ -418,5 +422,5 @@ a{color:inherit}svg{display:block}
   document.querySelectorAll("input,textarea").forEach(i=>i.addEventListener("input",()=>i.removeAttribute("aria-invalid")));
 })();
 </script>
-</body>
+<script>/* なめらかスクロールは、本人が操作してから有効にする（リロード時に上から勝手に流れないように） */(function(){var on=function(){document.documentElement.classList.add("sm");["pointerdown","keydown","wheel","touchstart"].forEach(function(e){removeEventListener(e,on,true)})};["pointerdown","keydown","wheel","touchstart"].forEach(function(e){addEventListener(e,on,{capture:true,passive:true})})})();</script></body>
 </html>
